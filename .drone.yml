@@ -35,4 +35,4 @@ steps:
 volumes:
   - name: reports
     host:
-      path: /home/dev/work/src/github.com/cyantarek/drone-go-git-test/reports
+      path: /home/dev/work/src/github.com/lagmoellertim/drone-go-git-test/reports
