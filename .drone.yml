@@ -2,17 +2,17 @@ kind: pipeline
 name: default
 
 steps:
- - name: compile
-   image: lagmoellertim/google-clojure-compiler
-   commands:
-     - mkdir dist
-     - compile --js hello.js --js_output_file dist/compiled.js
+  - name: compile
+    image: lagmoellertim/google-clojure-compiler
+    commands:
+      - mkdir dist
+      - compile --js hello.js --js_output_file dist/compiled.js
 
- - name: publish
-   image: plugins/github-release
-   settings:
-     api_key: xxxxxxxx
-      from_secret: github_token
-     files: dist/compiled.js
-   when:
-     event: tag
+  - name: publish
+    image: plugins/github-release
+    settings:
+      api_key:
+        from_secret: github_token
+      files: dist/compiled.js
+    when:
+      event: tag
