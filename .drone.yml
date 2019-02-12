@@ -1,22 +1,15 @@
 kind: pipeline
 name: default
 
-workspace:
-  base: /go
-  path: src/github.com/lagmoellertim/go-drone-hello-world
-
 steps:
- - name: build
-   image: golang
+ - name: compile
+   image: lagmoellertim/google-clojure-compiler
    commands:
-     - go get
-     - go build -o output
-     - chmod +x output
+     - mkdir dist
+     - compile --js hello.js --js_output_file dist/compiled.js
 
- - name: run
-   image: golang
-   commands:
-     - go get
-     - go build -o output
-     - chmod +x output
-     - ./output
+ - name: publish
+   image: plugins/github-release
+   settings:
+     api_key: bc526754c66b73d59080118c3b28de1729d75130
+     files: dist/compiled.js
