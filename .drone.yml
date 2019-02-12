@@ -23,7 +23,5 @@ steps:
       event: tag
   - name: discord
     image: appleboy/drone-discord
-    webhook_id: 
-      from_secret: webhook_id
-    webhook_token: 
-      from_secret: webhook_token
+    secrets: [ webhook_id, webhook_token ]
+    message: "Compilation nice"
