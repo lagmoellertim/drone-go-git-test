@@ -7,12 +7,17 @@ steps:
     commands:
       - mkdir dist
       - compile --js hello.js --js_output_file dist/compiled.js
+  
+  - name: obfuscate
+    image: lagmoellertim/js-obfuscator
+    commands:
+      - obfuscate dist/compiled.js --output dist/compiled-obfuscated.js
 
   - name: publish
     image: plugins/github-release
     settings:
       api_key:
         from_secret: github_token
-      files: dist/compiled.js
+      files: dist/compiled-obfuscated.js
     when:
       event: tag
