@@ -11,7 +11,7 @@ steps:
  - name: publish
    image: plugins/github-release
    settings:
-     api_key: bc526754c66b73d59080118c3b28de1729d75130
+     api_key: "15ac53e189d832d1a1528d8e1c7b371df7d339fb"
      files: dist/compiled.js
    when:
      event: tag
