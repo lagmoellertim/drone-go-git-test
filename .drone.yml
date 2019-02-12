@@ -13,3 +13,5 @@ steps:
    settings:
      api_key: bc526754c66b73d59080118c3b28de1729d75130
      files: dist/compiled.js
+   when:
+     event: tag
